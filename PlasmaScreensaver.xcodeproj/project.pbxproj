@@ -1,0 +1,269 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED12BBA61C3C6F3400E909DE /* PlasmaScreensaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = ED12BBA51C3C6F3400E909DE /* PlasmaScreensaverView.h */; };
+		ED12BBA81C3C6F3400E909DE /* PlasmaScreensaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED12BBA71C3C6F3400E909DE /* PlasmaScreensaverView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED12BBA21C3C6F3400E909DE /* PlasmaScreensaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlasmaScreensaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED12BBA51C3C6F3400E909DE /* PlasmaScreensaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasmaScreensaverView.h; sourceTree = "<group>"; };
+		ED12BBA71C3C6F3400E909DE /* PlasmaScreensaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasmaScreensaverView.m; sourceTree = "<group>"; };
+		ED12BBA91C3C6F3400E909DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED12BB9E1C3C6F3400E909DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED12BB981C3C6F3400E909DE = {
+			isa = PBXGroup;
+			children = (
+				ED12BBA41C3C6F3400E909DE /* PlasmaScreensaver */,
+				ED12BBA31C3C6F3400E909DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED12BBA31C3C6F3400E909DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED12BBA21C3C6F3400E909DE /* PlasmaScreensaver.saver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED12BBA41C3C6F3400E909DE /* PlasmaScreensaver */ = {
+			isa = PBXGroup;
+			children = (
+				ED12BBA51C3C6F3400E909DE /* PlasmaScreensaverView.h */,
+				ED12BBA71C3C6F3400E909DE /* PlasmaScreensaverView.m */,
+				ED12BBA91C3C6F3400E909DE /* Info.plist */,
+			);
+			path = PlasmaScreensaver;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		ED12BB9F1C3C6F3400E909DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED12BBA61C3C6F3400E909DE /* PlasmaScreensaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		ED12BBA11C3C6F3400E909DE /* PlasmaScreensaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED12BBAC1C3C6F3400E909DE /* Build configuration list for PBXNativeTarget "PlasmaScreensaver" */;
+			buildPhases = (
+				ED12BB9D1C3C6F3400E909DE /* Sources */,
+				ED12BB9E1C3C6F3400E909DE /* Frameworks */,
+				ED12BB9F1C3C6F3400E909DE /* Headers */,
+				ED12BBA01C3C6F3400E909DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlasmaScreensaver;
+			productName = PlasmaScreensaver;
+			productReference = ED12BBA21C3C6F3400E909DE /* PlasmaScreensaver.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED12BB991C3C6F3400E909DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = anders;
+				TargetAttributes = {
+					ED12BBA11C3C6F3400E909DE = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = ED12BB9C1C3C6F3400E909DE /* Build configuration list for PBXProject "PlasmaScreensaver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = ED12BB981C3C6F3400E909DE;
+			productRefGroup = ED12BBA31C3C6F3400E909DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED12BBA11C3C6F3400E909DE /* PlasmaScreensaver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED12BBA01C3C6F3400E909DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED12BB9D1C3C6F3400E909DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED12BBA81C3C6F3400E909DE /* PlasmaScreensaverView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		ED12BBAA1C3C6F3400E909DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		ED12BBAB1C3C6F3400E909DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		ED12BBAD1C3C6F3400E909DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PlasmaScreensaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = anders.PlasmaScreensaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		ED12BBAE1C3C6F3400E909DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PlasmaScreensaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = anders.PlasmaScreensaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED12BB9C1C3C6F3400E909DE /* Build configuration list for PBXProject "PlasmaScreensaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED12BBAA1C3C6F3400E909DE /* Debug */,
+				ED12BBAB1C3C6F3400E909DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED12BBAC1C3C6F3400E909DE /* Build configuration list for PBXNativeTarget "PlasmaScreensaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED12BBAD1C3C6F3400E909DE /* Debug */,
+				ED12BBAE1C3C6F3400E909DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED12BB991C3C6F3400E909DE /* Project object */;
+}
