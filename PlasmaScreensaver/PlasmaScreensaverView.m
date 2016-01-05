@@ -46,11 +46,11 @@
     
     // Calculate random width and height
     rect.size = NSMakeSize(
-                           SSRandomFloatBetween( size.width / 100.0, size.width / 10.0 ),
-                           SSRandomFloatBetween( size.height / 100.0, size.height / 10.0 ));
+                           SSRandomFloatBetween(size.width / 100.0, size.width / 10.0),
+                           SSRandomFloatBetween(size.height / 100.0, size.height / 10.0));
     
     // Calculate random origin point
-    rect.origin = SSRandomPointForSizeWithinRect( rect.size, [self bounds] );
+    rect.origin = SSRandomPointForSizeWithinRect(rect.size, [self bounds]);
     
     
     path = [NSBezierPath bezierPathWithRect:rect];
