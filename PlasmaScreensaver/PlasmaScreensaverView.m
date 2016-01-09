@@ -16,6 +16,18 @@
     if (self) {
         [self setAnimationTimeInterval:1/30.0];
     }
+
+    NSSize size;
+    size = [self bounds].size;
+    screenWidth = size.width;
+    screenHeight = size.height;
+    
+    virtualScreenWidth = 320;
+    virtualScreenHeight = 240;
+    
+    virtualPixelWidth = (float )screenWidth / (float )virtualScreenWidth;
+    virtualPixelHeight = (float )screenHeight / (float )virtualScreenHeight;
+
     return self;
 }
 
@@ -36,32 +48,28 @@
 
 - (void)animateOneFrame
 {
-    NSBezierPath *path;
+    for (int x = 0; x < virtualScreenWidth; x++) {
+        for (int y = 0; y < virtualScreenHeight; y++) {
+            float red = SSRandomFloatBetween(0.0, 255.0) / 255.0;
+            float green = SSRandomFloatBetween(0.0, 255.0) / 255.0;
+            float blue = SSRandomFloatBetween(0.0, 255.0) / 255.0;
+            
+            [self drawPixel:x y:y red:red green:green blue:blue];
+        }
+    }
+}
+
+- (void)drawPixel:(NSUInteger) x y:(NSUInteger) y red:(float) red green:(float) green blue:(float) blue
+{
     NSRect rect;
-    NSSize size;
-    NSColor *color;
-    float red, green, blue, alpha;
+    rect.size = NSMakeSize(virtualPixelWidth, virtualPixelHeight);
+    rect.origin = NSMakePoint((float)x * virtualPixelWidth, (float)y * virtualPixelHeight);
     
-    size = [self bounds].size;
-    
-    // Calculate random width and height
-    rect.size = NSMakeSize(
-                           SSRandomFloatBetween(size.width / 100.0, size.width / 10.0),
-                           SSRandomFloatBetween(size.height / 100.0, size.height / 10.0));
-    
-    // Calculate random origin point
-    rect.origin = SSRandomPointForSizeWithinRect(rect.size, [self bounds]);
-    
-    
+    NSBezierPath *path;
     path = [NSBezierPath bezierPathWithRect:rect];
     
-    // Calculate a random color
-    red = SSRandomFloatBetween(0.0, 255.0) / 255.0;
-    green = SSRandomFloatBetween(0.0, 255.0) / 255.0;
-    blue = SSRandomFloatBetween(0.0, 255.0) / 255.0;
-    alpha = SSRandomFloatBetween(0.0, 255.0) / 255.0;
-    
-    color = [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
+    NSColor *color;
+    color = [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:1];
     
     [color set];
     
