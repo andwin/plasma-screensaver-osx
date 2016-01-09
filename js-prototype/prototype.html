@@ -6,8 +6,38 @@
       var c = document.getElementById('myCanvas');
       var ctx = c.getContext('2d');
 
-      ctx.fillStyle = '#6677AA';
-      ctx.fillRect(100, 100, 50, 50);
+      var screenWidth = 1024;
+      var screenHeight = 768;
+
+      var virtualScreenWidth = 320;
+      var virtualScreenHeight = 240;
+
+      var virtualPixelWidth = screenWidth / virtualScreenWidth;
+      var virtualPixelHeight = screenHeight / virtualScreenHeight;
+
+      var drawPixel = function(x, y, red, green, blue) {
+        red = Math.floor(red * 256.0);
+        green = Math.floor(green * 256.0);
+        blue = Math.floor(blue * 256.0);
+
+        ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        ctx.fillRect(x * virtualPixelWidth, y * virtualPixelHeight, virtualPixelWidth, virtualPixelHeight);
+      }
+
+      var animateOneFrame = function() {
+        for(var x = 0; x < virtualScreenWidth; x++) {
+          for(var y = 0; y < virtualScreenHeight; y++) {
+
+            var red = Math.random();
+            var green = Math.random();
+            var blue = Math.random();
+
+            drawPixel(x, y, red, green, blue);
+          }
+        }
+      }
+
+      animateOneFrame();
     </script>
   </body>
 </html>
