@@ -28,9 +28,10 @@
         for(var x = 0; x < virtualScreenWidth; x++) {
           for(var y = 0; y < virtualScreenHeight; y++) {
 
-            var red = Math.random();
-            var green = Math.random();
-            var blue = Math.random();
+            var v = Math.sin(x / (virtualPixelWidth * 2) + 1) / 2;
+            var red = Math.sin(v * 3.141592);
+            var green = Math.cos(v * 3.141592);
+            var blue = 0;
 
             drawPixel(x, y, red, green, blue);
           }
