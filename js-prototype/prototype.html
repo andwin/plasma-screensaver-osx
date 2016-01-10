@@ -29,8 +29,8 @@
           for(var y = 0; y < virtualScreenHeight; y++) {
 
             var v = Math.sin(x / (virtualPixelWidth * 2) + 1) / 2;
-            var red = Math.sin(v * 3.141592);
-            var green = Math.cos(v * 3.141592);
+            var red = Math.sin(v * Math.PI);
+            var green = Math.cos(v * Math.PI);
             var blue = 0;
 
             drawPixel(x, y, red, green, blue);
