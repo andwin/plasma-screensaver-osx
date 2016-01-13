@@ -21,7 +21,9 @@
         blue = Math.floor(blue * 256.0);
 
         ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
-        ctx.fillRect(x * virtualPixelWidth, y * virtualPixelHeight, virtualPixelWidth, virtualPixelHeight);
+        var screenX = Math.ceil(x * virtualPixelWidth);
+        var screenY = Math.ceil(y * virtualPixelHeight);
+        ctx.fillRect(screenX, screenY, Math.ceil(virtualPixelWidth), Math.ceil(virtualPixelHeight));
       }
 
       var animateOneFrame = function() {
