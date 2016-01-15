@@ -33,7 +33,11 @@
           for(var y = 0; y < virtualScreenHeight; y++) {
 
             // var v = Math.sin(x / (virtualPixelWidth * 2) + time) / 2;
-            var v = Math.sin((x * Math.sin(time / 5) / (virtualPixelWidth * 2) + y * Math.cos(time / 7) / (virtualPixelHeight * 2)) + time) / 2;
+            // var v = Math.sin((x * Math.sin(time / 5) / (virtualPixelWidth * 2) + y * Math.cos(time / 7) / (virtualPixelHeight * 2)) + time) / 2;
+
+            var cx = x - Math.sin(time / 9) * virtualScreenWidth / 2 * 0.8 - virtualScreenWidth / 2;
+            var cy = y - Math.sin(time / 6) * virtualScreenHeight / 2 * 0.8 - virtualScreenHeight / 2;
+            var v = Math.sin(Math.sqrt((cx * cx + cy * cy) / virtualPixelWidth / 90) + time / 2) / 2;
 
             var red = Math.sin(v * Math.PI);
             var green = Math.cos(v * Math.PI);
