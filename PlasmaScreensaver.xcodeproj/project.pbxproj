@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		ED12BBA61C3C6F3400E909DE /* PlasmaScreensaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = ED12BBA51C3C6F3400E909DE /* PlasmaScreensaverView.h */; };
 		ED12BBA81C3C6F3400E909DE /* PlasmaScreensaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED12BBA71C3C6F3400E909DE /* PlasmaScreensaverView.m */; };
+		ED9F01521D4D466100C2FF17 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F01511D4D466100C2FF17 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,7 @@
 		ED12BBA51C3C6F3400E909DE /* PlasmaScreensaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasmaScreensaverView.h; sourceTree = "<group>"; };
 		ED12BBA71C3C6F3400E909DE /* PlasmaScreensaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasmaScreensaverView.m; sourceTree = "<group>"; };
 		ED12BBA91C3C6F3400E909DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED9F01511D4D466100C2FF17 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -23,6 +25,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED9F01521D4D466100C2FF17 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +35,7 @@
 		ED12BB981C3C6F3400E909DE = {
 			isa = PBXGroup;
 			children = (
+				ED9F01511D4D466100C2FF17 /* OpenGL.framework */,
 				ED12BBA41C3C6F3400E909DE /* PlasmaScreensaver */,
 				ED12BBA31C3C6F3400E909DE /* Products */,
 			);
@@ -262,6 +266,7 @@
 				ED12BBAE1C3C6F3400E909DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
