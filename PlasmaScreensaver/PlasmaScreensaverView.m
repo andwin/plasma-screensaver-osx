@@ -10,25 +10,67 @@
 
 @implementation PlasmaScreensaverView
 
-- (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
+- (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
     self = [super initWithFrame:frame isPreview:isPreview];
+
     if (self) {
+        NSOpenGLPixelFormatAttribute attributes[] = {
+            NSOpenGLPFAAccelerated,
+            NSOpenGLPFADepthSize, 16,
+            NSOpenGLPFAMinimumPolicy,
+            NSOpenGLPFAClosestPolicy,
+            0
+        };
+        NSOpenGLPixelFormat *format;
+
+        format = [[NSOpenGLPixelFormat alloc] initWithAttributes:attributes];
+        glView = [[NSOpenGLView alloc] initWithFrame:NSZeroRect pixelFormat:format];
+
+        if (!glView) {
+            NSLog(@"Couldn't initialize OpenGL view.");
+            return nil;
+        }
+
+        [self addSubview:glView];
+        [self setUpOpenGL];
+
         [self setAnimationTimeInterval:1/30.0];
     }
 
-    NSSize size;
-    size = [self bounds].size;
-    screenWidth = size.width;
-    screenHeight = size.height;
-    
-    virtualScreenWidth = 320;
-    virtualScreenHeight = 240;
-    
-    virtualPixelWidth = (float )screenWidth / (float )virtualScreenWidth;
-    virtualPixelHeight = (float )screenHeight / (float )virtualScreenHeight;
-
     return self;
+}
+
+- (void)setUpOpenGL
+{
+    [[glView openGLContext] makeCurrentContext];
+
+    glShadeModel(GL_SMOOTH);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearDepth(1.0f);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
+    rotation = 0.0f;
+}
+
+- (void)setFrameSize:(NSSize)newSize
+{
+    [super setFrameSize:newSize];
+    [glView setFrameSize:newSize];
+
+    [[glView openGLContext] makeCurrentContext];
+
+    // Reshape
+    glViewport(0, 0, (GLsizei)newSize.width, (GLsizei)newSize.height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(45.0f, (GLfloat)newSize.width / (GLfloat)newSize.height, 0.1f, 100.0f );
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    [[glView openGLContext] update];
 }
 
 - (void)startAnimation
@@ -48,32 +90,49 @@
 
 - (void)animateOneFrame
 {
-    for (int x = 0; x < virtualScreenWidth; x++) {
-        for (int y = 0; y < virtualScreenHeight; y++) {
-            float red = SSRandomFloatBetween(0.0, 255.0) / 255.0;
-            float green = SSRandomFloatBetween(0.0, 255.0) / 255.0;
-            float blue = SSRandomFloatBetween(0.0, 255.0) / 255.0;
-            
-            [self drawPixel:x y:y red:red green:green blue:blue];
-        }
-    }
-}
+    rotation += 0.2f;
 
-- (void)drawPixel:(NSUInteger) x y:(NSUInteger) y red:(float) red green:(float) green blue:(float) blue
-{
-    NSRect rect;
-    rect.size = NSMakeSize(virtualPixelWidth, virtualPixelHeight);
-    rect.origin = NSMakePoint((float)x * virtualPixelWidth, (float)y * virtualPixelHeight);
-    
-    NSBezierPath *path;
-    path = [NSBezierPath bezierPathWithRect:rect];
-    
-    NSColor *color;
-    color = [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:1];
-    
-    [color set];
-    
-    [path fill];
+    [[glView openGLContext] makeCurrentContext];
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+
+    glTranslatef(-1.5f, 0.0f, -6.0f);
+    glRotatef(rotation, 0.0f, 1.0f, 0.0f);
+
+    glBegin(GL_TRIANGLES);
+    {
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(0.0f,  1.0f, 0.0f);
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(-1.0f, -1.0f, 1.0f);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(1.0f, -1.0f, 1.0f);
+
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(0.0f, 1.0f, 0.0f);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(1.0f, -1.0f, 1.0f);
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(1.0f, -1.0f, -1.0f);
+
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(0.0f, 1.0f, 0.0f);
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(1.0f, -1.0f, -1.0f);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(-1.0f, -1.0f, -1.0f);
+
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(0.0f, 1.0f, 0.0f);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(-1.0f, -1.0f, -1.0f);
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(-1.0f, -1.0f, 1.0f);
+    }
+    glEnd();
+
+    glFlush();
 }
 
 - (BOOL)hasConfigureSheet
