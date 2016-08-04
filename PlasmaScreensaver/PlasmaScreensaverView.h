@@ -7,15 +7,9 @@
 //
 
 #import <ScreenSaver/ScreenSaver.h>
-#import <OpenGL/gl.h>
-#import <OpenGL/glu.h>
 
 @interface PlasmaScreensaverView : ScreenSaverView
 {
-    NSOpenGLView *glView;
-    GLfloat rotation;
 }
-
-- (void)setUpOpenGL;
 
 @end

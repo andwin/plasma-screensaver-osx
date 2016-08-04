@@ -15,62 +15,10 @@
     self = [super initWithFrame:frame isPreview:isPreview];
 
     if (self) {
-        NSOpenGLPixelFormatAttribute attributes[] = {
-            NSOpenGLPFAAccelerated,
-            NSOpenGLPFADepthSize, 16,
-            NSOpenGLPFAMinimumPolicy,
-            NSOpenGLPFAClosestPolicy,
-            0
-        };
-        NSOpenGLPixelFormat *format;
-
-        format = [[NSOpenGLPixelFormat alloc] initWithAttributes:attributes];
-        glView = [[NSOpenGLView alloc] initWithFrame:NSZeroRect pixelFormat:format];
-
-        if (!glView) {
-            NSLog(@"Couldn't initialize OpenGL view.");
-            return nil;
-        }
-
-        [self addSubview:glView];
-        [self setUpOpenGL];
-
         [self setAnimationTimeInterval:1/30.0];
     }
 
     return self;
-}
-
-- (void)setUpOpenGL
-{
-    [[glView openGLContext] makeCurrentContext];
-
-    glShadeModel(GL_SMOOTH);
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    glClearDepth(1.0f);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-
-    rotation = 0.0f;
-}
-
-- (void)setFrameSize:(NSSize)newSize
-{
-    [super setFrameSize:newSize];
-    [glView setFrameSize:newSize];
-
-    [[glView openGLContext] makeCurrentContext];
-
-    // Reshape
-    glViewport(0, 0, (GLsizei)newSize.width, (GLsizei)newSize.height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45.0f, (GLfloat)newSize.width / (GLfloat)newSize.height, 0.1f, 100.0f );
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-
-    [[glView openGLContext] update];
 }
 
 - (void)startAnimation
@@ -90,49 +38,64 @@
 
 - (void)animateOneFrame
 {
-    rotation += 0.2f;
+    int width = 320;
+    int height = 240;
 
-    [[glView openGLContext] makeCurrentContext];
+    size_t bufferLength = width * height * 4;
 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
+    NSMutableData* data = [NSMutableData dataWithLength:bufferLength];
+    char* imageData = [data mutableBytes];
 
-    glTranslatef(-1.5f, 0.0f, -6.0f);
-    glRotatef(rotation, 0.0f, 1.0f, 0.0f);
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            char red = SSRandomIntBetween(0, 255);
+            char green = SSRandomIntBetween(0, 255);
+            char blue = SSRandomIntBetween(0, 255);
 
-    glBegin(GL_TRIANGLES);
-    {
-        glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex3f(0.0f,  1.0f, 0.0f);
-        glColor3f(0.0f, 1.0f, 0.0f);
-        glVertex3f(-1.0f, -1.0f, 1.0f);
-        glColor3f(0.0f, 0.0f, 1.0f);
-        glVertex3f(1.0f, -1.0f, 1.0f);
-
-        glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex3f(0.0f, 1.0f, 0.0f);
-        glColor3f(0.0f, 0.0f, 1.0f);
-        glVertex3f(1.0f, -1.0f, 1.0f);
-        glColor3f(0.0f, 1.0f, 0.0f);
-        glVertex3f(1.0f, -1.0f, -1.0f);
-
-        glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex3f(0.0f, 1.0f, 0.0f);
-        glColor3f(0.0f, 1.0f, 0.0f);
-        glVertex3f(1.0f, -1.0f, -1.0f);
-        glColor3f(0.0f, 0.0f, 1.0f);
-        glVertex3f(-1.0f, -1.0f, -1.0f);
-
-        glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex3f(0.0f, 1.0f, 0.0f);
-        glColor3f(0.0f, 0.0f, 1.0f);
-        glVertex3f(-1.0f, -1.0f, -1.0f);
-        glColor3f(0.0f, 1.0f, 0.0f);
-        glVertex3f(-1.0f, -1.0f, 1.0f);
+            int pos = (y * height + x) * 4;
+            imageData[pos] = red;
+            imageData[pos +1] = green;
+            imageData[pos +2] = blue;
+            imageData[pos +3] = 50;
+        }
     }
-    glEnd();
+/*
+    for (int c = 0; c < bufferLength; c++) {
+        imageData[c] = SSRandomIntBetween(0, 255);
+    }
+*/
 
-    glFlush();
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, imageData, bufferLength, NULL);
+    size_t bitsPerComponent = 8;
+    size_t bitsPerPixel = 32;
+    size_t bytesPerRow = 4 * width;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+
+    CGImageRef iref = CGImageCreate(width,
+                                    height,
+                                    bitsPerComponent,
+                                    bitsPerPixel,
+                                    bytesPerRow,
+                                    colorSpaceRef,
+                                    bitmapInfo,
+                                    provider,   // data provider
+                                    NULL,       // decode
+                                    YES,        // should interpolate
+                                    renderingIntent);
+
+    NSImage* image = [[NSImage alloc] initWithCGImage:iref size:NSMakeSize(width, height)];
+
+    NSSize size;
+    size = [self bounds].size;
+    
+    [image drawInRect:NSMakeRect(0,0,size.width, size.height)
+             fromRect:NSMakeRect(0,0,[image size].width, [image size].height)
+            operation:NSCompositeSourceOver
+             fraction:1.0];
+
+    
 }
 
 - (BOOL)hasConfigureSheet
