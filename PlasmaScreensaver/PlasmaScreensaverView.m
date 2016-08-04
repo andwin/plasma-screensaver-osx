@@ -52,7 +52,7 @@
             char green = SSRandomIntBetween(0, 255);
             char blue = SSRandomIntBetween(0, 255);
 
-            int pos = (y * height + x) * 4;
+            int pos = (y * width + x) * 4;
             imageData[pos] = red;
             imageData[pos +1] = green;
             imageData[pos +2] = blue;
