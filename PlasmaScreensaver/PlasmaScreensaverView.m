@@ -56,7 +56,7 @@
             imageData[pos] = red;
             imageData[pos +1] = green;
             imageData[pos +2] = blue;
-            imageData[pos +3] = 50;
+            imageData[pos +3] = 255;
         }
     }
 /*
