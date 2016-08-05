@@ -38,6 +38,8 @@
 
 - (void)animateOneFrame
 {
+    [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
+    
     int width = 320;
     int height = 240;
 
