@@ -39,7 +39,7 @@
 - (void)animateOneFrame
 {
     [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
-    
+
     int width = 320;
     int height = 240;
 
@@ -91,13 +91,13 @@
 
     NSSize size;
     size = [self bounds].size;
-    
+
     [image drawInRect:NSMakeRect(0,0,size.width, size.height)
              fromRect:NSMakeRect(0,0,[image size].width, [image size].height)
             operation:NSCompositeSourceOver
              fraction:1.0];
 
-    
+
 }
 
 - (BOOL)hasConfigureSheet
