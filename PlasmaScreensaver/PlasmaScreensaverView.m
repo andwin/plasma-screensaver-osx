@@ -40,21 +40,21 @@
 {
     [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
 
-    int width = 320;
-    int height = 240;
+    int virtualScreenWidth = 320;
+    int virtualScreenHeight = 240;
 
-    size_t bufferLength = width * height * 4;
+    size_t bufferLength = virtualScreenWidth * virtualScreenHeight * 4;
 
     NSMutableData* data = [NSMutableData dataWithLength:bufferLength];
     char* imageData = [data mutableBytes];
 
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
+    for (int y = 0; y < virtualScreenHeight; y++) {
+        for (int x = 0; x < virtualScreenWidth; x++) {
             char red = SSRandomIntBetween(0, 255);
             char green = SSRandomIntBetween(0, 255);
             char blue = SSRandomIntBetween(0, 255);
 
-            int pos = (y * width + x) * 4;
+            int pos = (y * virtualScreenWidth + x) * 4;
             imageData[pos] = red;
             imageData[pos +1] = green;
             imageData[pos +2] = blue;
@@ -65,13 +65,13 @@
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, imageData, bufferLength, NULL);
     size_t bitsPerComponent = 8;
     size_t bitsPerPixel = 32;
-    size_t bytesPerRow = 4 * width;
+    size_t bytesPerRow = 4 * virtualScreenWidth;
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
     CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
     CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
 
-    CGImageRef iref = CGImageCreate(width,
-                                    height,
+    CGImageRef iref = CGImageCreate(virtualScreenWidth,
+                                    virtualScreenHeight,
                                     bitsPerComponent,
                                     bitsPerPixel,
                                     bytesPerRow,
@@ -82,7 +82,7 @@
                                     YES,        // should interpolate
                                     renderingIntent);
 
-    NSImage* image = [[NSImage alloc] initWithCGImage:iref size:NSMakeSize(width, height)];
+    NSImage* image = [[NSImage alloc] initWithCGImage:iref size:NSMakeSize(virtualScreenWidth, virtualScreenHeight)];
 
     NSSize size;
     size = [self bounds].size;
