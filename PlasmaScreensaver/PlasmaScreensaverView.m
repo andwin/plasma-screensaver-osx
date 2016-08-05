@@ -61,11 +61,6 @@
             imageData[pos +3] = 255;
         }
     }
-/*
-    for (int c = 0; c < bufferLength; c++) {
-        imageData[c] = SSRandomIntBetween(0, 255);
-    }
-*/
 
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, imageData, bufferLength, NULL);
     size_t bitsPerComponent = 8;
