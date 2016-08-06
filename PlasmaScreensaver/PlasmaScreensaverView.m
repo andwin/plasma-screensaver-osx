@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame isPreview:isPreview];
 
     if (self) {
-        [self setAnimationTimeInterval:1/30.0];
+        [self setAnimationTimeInterval:1/5.0];
     }
 
     return self;
