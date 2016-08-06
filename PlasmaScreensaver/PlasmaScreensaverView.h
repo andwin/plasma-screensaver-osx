@@ -10,6 +10,11 @@
 
 @interface PlasmaScreensaverView : ScreenSaverView
 {
+    NSUInteger virtualScreenWidth;
+    NSUInteger virtualScreenHeight;
+
+    NSUInteger screenWidth;
+    NSUInteger screenHeight;
 }
 
 @end

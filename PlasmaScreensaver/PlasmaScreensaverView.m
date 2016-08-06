@@ -18,6 +18,13 @@
         [self setAnimationTimeInterval:1/5.0];
     }
 
+    virtualScreenWidth = 320;
+    virtualScreenHeight = 240;
+
+    NSSize screenSize = [self bounds].size;
+    screenWidth = screenSize.width;
+    screenHeight = screenSize.height;
+
     return self;
 }
 
@@ -39,9 +46,6 @@
 - (void)animateOneFrame
 {
     [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
-
-    int virtualScreenWidth = 320;
-    int virtualScreenHeight = 240;
 
     size_t bufferLength = virtualScreenWidth * virtualScreenHeight * 4;
 
@@ -84,15 +88,10 @@
 
     NSImage* image = [[NSImage alloc] initWithCGImage:iref size:NSMakeSize(virtualScreenWidth, virtualScreenHeight)];
 
-    NSSize size;
-    size = [self bounds].size;
-
-    [image drawInRect:NSMakeRect(0,0,size.width, size.height)
-             fromRect:NSMakeRect(0,0,[image size].width, [image size].height)
+    [image drawInRect:NSMakeRect(0, 0, screenWidth, screenHeight)
+             fromRect:NSMakeRect(0, 0, virtualScreenWidth, virtualScreenHeight)
             operation:NSCompositeSourceOver
              fraction:1.0];
-
-
 }
 
 - (BOOL)hasConfigureSheet
