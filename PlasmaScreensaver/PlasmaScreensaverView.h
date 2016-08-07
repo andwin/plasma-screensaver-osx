@@ -15,6 +15,9 @@
 
     NSUInteger screenWidth;
     NSUInteger screenHeight;
+
+    float virtualPixelWidth;
+    float virtualPixelHeight;
 }
 
 @end

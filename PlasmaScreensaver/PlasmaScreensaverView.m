@@ -25,6 +25,9 @@
     screenWidth = screenSize.width;
     screenHeight = screenSize.height;
 
+    virtualPixelWidth = (float )screenWidth / (float )virtualScreenWidth;
+    virtualPixelHeight = (float )screenHeight / (float )virtualScreenHeight;
+
     return self;
 }
 
