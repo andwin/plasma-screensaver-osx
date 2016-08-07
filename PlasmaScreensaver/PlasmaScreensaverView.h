@@ -18,6 +18,8 @@
 
     float virtualPixelWidth;
     float virtualPixelHeight;
+
+    float time;
 }
 
 @end

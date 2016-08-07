@@ -28,6 +28,8 @@
     virtualPixelWidth = (float )screenWidth / (float )virtualScreenWidth;
     virtualPixelHeight = (float )screenHeight / (float )virtualScreenHeight;
 
+    time = 0.0;
+
     return self;
 }
 
