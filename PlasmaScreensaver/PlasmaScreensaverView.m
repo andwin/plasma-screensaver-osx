@@ -63,7 +63,7 @@
 
             float v = v1;
             int colors = 255;
-            v = (char )((v + 0.5) * (float)colors);
+            v = (v + 0.5f) * (float)colors;
 
             if (v > colors -1) v = colors -1;
             if (v < 0) v = 0;
