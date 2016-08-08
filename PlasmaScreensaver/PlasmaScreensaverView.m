@@ -59,17 +59,26 @@
 
     for (int y = 0; y < virtualScreenHeight; y++) {
         for (int x = 0; x < virtualScreenWidth; x++) {
-            char red = SSRandomIntBetween(0, 255);
-            char green = SSRandomIntBetween(0, 255);
-            char blue = SSRandomIntBetween(0, 255);
+            float v1 = sin((float )x / (virtualPixelWidth * 5.0f) + time * 1.02f) / 1.5f;
+
+            float v = v1;
+            int colors = 255;
+            v = (char )((v + 0.5) * (float)colors);
+
+            if (v > colors -1) v = colors -1;
+            if (v < 0) v = 0;
 
             int pos = (y * virtualScreenWidth + x) * 4;
-            imageData[pos] = red;
-            imageData[pos +1] = green;
-            imageData[pos +2] = blue;
+
+            imageData[pos] = v;
+            imageData[pos +1] = v;
+            imageData[pos +2] = v;
             imageData[pos +3] = 255;
+
         }
     }
+
+    time += 1.05;
 
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, imageData, bufferLength, NULL);
     size_t bitsPerComponent = 8;
