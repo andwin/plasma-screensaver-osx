@@ -61,7 +61,9 @@
         for (int x = 0; x < virtualScreenWidth; x++) {
             float v1 = sin((float )x / (virtualPixelWidth * 5.0f) + time * 1.02f) / 1.5f;
 
-            float v = v1;
+            float v2 = sin(((float )x * sin(time / 5.0f) / (virtualPixelWidth * 5.0f) + (float )y * cos(time / 7) / (virtualPixelHeight * 7)) + time + 100.0) / 1.9;
+            
+            float v = v2;
             int colors = 255;
             v = (v + 0.5f) * (float)colors;
 
