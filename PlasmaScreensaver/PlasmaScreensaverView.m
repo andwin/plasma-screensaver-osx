@@ -62,8 +62,12 @@
             float v1 = sin((float )x / (virtualPixelWidth * 5.0f) + time * 1.02f) / 1.5f;
 
             float v2 = sin(((float )x * sin(time / 5.0f) / (virtualPixelWidth * 5.0f) + (float )y * cos(time / 7) / (virtualPixelHeight * 7)) + time + 100.0) / 1.9;
-            
-            float v = v2;
+
+            float cx = x - sin(time / 9.0f) * virtualScreenWidth / 2.0f * 0.8f - virtualScreenWidth / 2.0f;
+            float cy = y - sin(time / 6.0f) * virtualScreenHeight / 2.0f * 0.8f - virtualScreenHeight / 2.0f;
+            float v3 = sin(sqrt((cx * cx + cy * cy) / virtualPixelWidth / 180.0f) + time) / 2.3;
+
+            float v = v3;
             int colors = 255;
             v = (v + 0.5f) * (float)colors;
 
