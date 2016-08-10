@@ -67,7 +67,7 @@
             float cy = y - sin(time / 6.0f) * virtualScreenHeight / 2.0f * 0.8f - virtualScreenHeight / 2.0f;
             float v3 = sin(sqrt((cx * cx + cy * cy) / virtualPixelWidth / 180.0f) + time) / 2.3;
 
-            float v = v3;
+            float v = (v1 + v2 + v3) / 3;
             int colors = 255;
             v = (v + 0.5f) * (float)colors;
 
