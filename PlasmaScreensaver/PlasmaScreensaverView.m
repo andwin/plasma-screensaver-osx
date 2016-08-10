@@ -84,7 +84,7 @@
         }
     }
 
-    time += 1.05;
+    time += 0.05;
 
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, imageData, bufferLength, NULL);
     size_t bitsPerComponent = 8;
