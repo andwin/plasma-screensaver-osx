@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame isPreview:isPreview];
 
     if (self) {
-        [self setAnimationTimeInterval:1/5.0];
+        [self setAnimationTimeInterval:1/15.0];
     }
 
     virtualScreenWidth = 320;
@@ -80,7 +80,6 @@
             imageData[pos +1] = v;
             imageData[pos +2] = v;
             imageData[pos +3] = 255;
-
         }
     }
 
