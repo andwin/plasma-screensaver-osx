@@ -20,6 +20,7 @@
     float virtualPixelHeight;
 
     size_t bufferLength;
+    NSMutableData* data;
     char* imageData;
 
     float time;

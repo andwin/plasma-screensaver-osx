@@ -29,7 +29,7 @@
     virtualPixelHeight = (float )screenHeight / (float )virtualScreenHeight;
 
     bufferLength = virtualScreenWidth * virtualScreenHeight * 4;
-    NSMutableData* data = [NSMutableData dataWithLength:bufferLength];
+    data = [NSMutableData dataWithLength:bufferLength];
     imageData = [data mutableBytes];
 
     time = 0.0;
