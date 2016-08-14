@@ -28,6 +28,10 @@
     virtualPixelWidth = (float )screenWidth / (float )virtualScreenWidth;
     virtualPixelHeight = (float )screenHeight / (float )virtualScreenHeight;
 
+    bufferLength = virtualScreenWidth * virtualScreenHeight * 4;
+    NSMutableData* data = [NSMutableData dataWithLength:bufferLength];
+    imageData = [data mutableBytes];
+
     time = 0.0;
 
     return self;
@@ -50,12 +54,7 @@
 
 - (void)animateOneFrame
 {
-    [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
-
-    size_t bufferLength = virtualScreenWidth * virtualScreenHeight * 4;
-
-    NSMutableData* data = [NSMutableData dataWithLength:bufferLength];
-    char* imageData = [data mutableBytes];
+   [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
 
     for (int y = 0; y < virtualScreenHeight; y++) {
         for (int x = 0; x < virtualScreenWidth; x++) {

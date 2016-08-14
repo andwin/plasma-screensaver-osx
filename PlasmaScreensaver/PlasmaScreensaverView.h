@@ -19,6 +19,9 @@
     float virtualPixelWidth;
     float virtualPixelHeight;
 
+    size_t bufferLength;
+    char* imageData;
+
     float time;
 }
 
