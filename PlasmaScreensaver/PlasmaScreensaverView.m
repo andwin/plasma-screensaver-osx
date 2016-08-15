@@ -73,7 +73,7 @@
             if (v > colors -1) v = colors -1;
             if (v < 0) v = 0;
 
-            int pos = (y * virtualScreenWidth + x) * 4;
+            int pos = (y * (int )virtualScreenWidth + x) * 4;
 
             imageData[pos] = v;
             imageData[pos +1] = v;
