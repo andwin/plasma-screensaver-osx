@@ -34,6 +34,8 @@
 
     time = 0.0;
 
+    [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
+
     return self;
 }
 
@@ -54,8 +56,6 @@
 
 - (void)animateOneFrame
 {
-   [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
-
     for (int y = 0; y < virtualScreenHeight; y++) {
         for (int x = 0; x < virtualScreenWidth; x++) {
             float v1 = sin((float )x / (virtualPixelWidth * 5.0f) + time * 1.02f) / 1.5f;
