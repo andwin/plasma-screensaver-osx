@@ -63,8 +63,8 @@
 
             float v2 = sin(((float )x * sin(time / 5.0f) / (virtualScreenWidth / 5.0f) + (float )y * cos(time / 4.0f) / (virtualScreenHeight / 20.0f)) + time) / 7.9;
 
-            float cx = x - sin(time / 5.0f) * virtualScreenWidth / 2.0f * 0.8f - virtualScreenWidth / 2.0f;
-            float cy = y - sin(time / 3.0f) * virtualScreenHeight / 2.0f * 0.8f - virtualScreenHeight / 2.0f;
+            float cx = x - sin(time / 5.0f) * virtualScreenWidth / 1.6f - virtualScreenWidth / 2.0f;
+            float cy = y - sin(time / 3.0f) * virtualScreenHeight / 1.6f - virtualScreenHeight / 2.0f;
             float v3 = sin(sqrt((cx * cx + cy * cy) / virtualScreenWidth / 18.0f) + time) / 2.3f;
 
             float v = (v1 + v2 + v3) / 3.0f;
